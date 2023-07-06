@@ -43,24 +43,26 @@ function App() {
   },[table])
 
   return (
-    <div className="w-[350px] sm:w-[800px] text-center flex-col items-center mx-auto font-mono bg-[#121213] text-white">
-      <header className = "pt-16 pb-6">
-        <div>
-          <h1 className = "text-4xl font-bold pb-2">TAYLOR SWIRDLE</h1>
-          <h2 className = "text-lg">Guess the Taylor Swift song!</h2>
+    <div className = "w-auto bg-[#121213] text-white h-screen overflow-auto">
+      <div className="w-[350px] sm:w-[800px] text-center flex-col items-center mx-auto font-sans">
+        <header className = "pt-16 pb-6">
+          <div>
+            <h1 className = "text-4xl font-bold pb-2">TAYLOR SWIRDLE</h1>
+            <h2 className = "text-lg">Guess the Taylor Swift song!</h2>
+          </div>
+        </header>
+        <div className = "mx-auto">
+          <div className = "mb-5 flex justify-center gap-2 w-3/5 mx-auto text-xs">
+            <Rules></Rules>
+            <Share></Share>
+          </div>
+          <Dropdown won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
+          <ResultsTable table = {table} colors = {colors}></ResultsTable>
         </div>
-      </header>
-      <div className = "mx-auto">
-        <div className = "mb-5 flex justify-center gap-2 w-3/5 mx-auto text-xs">
-          <Rules></Rules>
-          <Share></Share>
-        </div>
-        <Dropdown won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
-        <ResultsTable table = {table} colors = {colors}></ResultsTable>
+        <p className = "p-8">
+          Inspired by <a target= "_blank" rel="noreferrer" className = "underline" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> and <a target= "_blank" rel="noreferrer" className = "underline" href="https://poeltl.dunk.town/">Poeltl</a>
+        </p>
       </div>
-      <p className = "p-8">
-        Inspired by <a target= "_blank" rel="noreferrer" className = "underline" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> and <a target= "_blank" rel="noreferrer" className = "underline" href="https://poeltl.dunk.town/">Poeltl</a>
-      </p>
     </div>
   );
 }

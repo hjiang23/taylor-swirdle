@@ -32,7 +32,8 @@ function makeGuess(guess: string, ans: number, map: any) {
       first_letter: handleFirstLetter(guessObj, ansObj),
       album: handleAlbum(guessObj, ansObj),
       track_number: handleTrackNumber(guessObj, ansObj),
-      ft: handleFeatures(guessObj, ansObj),
+      // ft: handleFeatures(guessObj, ansObj),
+      length: handleLength(guessObj, ansObj),
       bonus: handleBonus(guessObj, ansObj),
       duration: handleDuration(guessObj, ansObj)
     };
@@ -112,6 +113,15 @@ function handleDuration(guessObj: DataEntry, ansObj: DataEntry) {
     const correctness = guessObj.track_name === ansObj.track_name ? 2 : diff <= 10 ? 1 : 0;
   
     return {duration: time, correctness: correctness, direction: correctness === 2 ? 0 : guessObj.duration_ms < ansObj.duration_ms ? 1 : -1};
+}
+
+function handleLength(guessObj: DataEntry, ansObj: DataEntry) {
+
+  const guessLength = guessObj.track_name.length;
+  const ansLength = ansObj.track_name.length;
+  const correctness = guessLength === ansLength ? 2 : Math.abs(guessLength - ansLength) <= 2 ? 1 : 0;
+
+  return {length: guessLength, correctness: correctness, direction: correctness === 2 ? 0 : guessLength < ansLength ? 1 : -1}
 }
 
 export default makeGuess;

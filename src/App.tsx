@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react';
 import './App.css';
 import Dropdown from './components/Dropdown';
 import ResultsTable from './components/ResultsTable';
+import Rules from './components/Rules';
+import Share from './components/Share';
 import data from './data.json';
 import makeGuess from './handleGuess';
 
@@ -13,8 +15,10 @@ data.forEach((element, index) => {
 function App() {
 
   const ans = 112;
+  const colors: string[] = ["#3a3a3c", "#b59f3b", "#538d4e"];
+
   const [table, setTable] = useState<any>([]);
-  const [clear, setClear] = useState("");
+  const [input, setInput] = useState("");
   const [guessNum, setGuessNum] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [won, setWon] = useState(false);
@@ -25,7 +29,7 @@ function App() {
       setWon(true);
       setGameOver(true);
     }
-    else if (guessNum + 1 > 7) {
+    else if (guessNum + 1 > 6) {
       setGameOver(true);
     }
     else {
@@ -39,9 +43,24 @@ function App() {
   },[table])
 
   return (
-    <div className="App">
-      <Dropdown won = {won} gameOver = {gameOver} guessNum = {guessNum} clear = {clear} setClear = {setClear} table = {table} handleGuess = {handleGuess}></Dropdown>
-      <ResultsTable table = {table}></ResultsTable>
+    <div className="w-[350px] sm:w-[800px] text-center flex-col items-center mx-auto font-mono bg-[#121213] text-white">
+      <header className = "pt-16 pb-6">
+        <div>
+          <h1 className = "text-4xl font-bold pb-2">TAYLOR SWIRDLE</h1>
+          <h2 className = "text-lg">Guess the Taylor Swift song!</h2>
+        </div>
+      </header>
+      <div className = "mx-auto">
+        <div className = "mb-5 flex justify-center gap-2 w-3/5 mx-auto text-xs">
+          <Rules></Rules>
+          <Share></Share>
+        </div>
+        <Dropdown won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
+        <ResultsTable table = {table} colors = {colors}></ResultsTable>
+      </div>
+      <p className = "p-8">
+        Inspired by <a target= "_blank" rel="noreferrer" className = "underline" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> and <a target= "_blank" rel="noreferrer" className = "underline" href="https://poeltl.dunk.town/">Poeltl</a>
+      </p>
     </div>
   );
 }

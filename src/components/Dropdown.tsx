@@ -21,7 +21,7 @@ function Dropdown(props: any) {
 
   const placeholderText = () => {
     if (!props.gameOver) {
-      return "Guess " + props.guessNum + " of 7";
+      return "Guess " + props.guessNum + " of 6";
     }
     else if (props.won) {
       return "You solved it in " + props.guessNum + "!";
@@ -36,11 +36,11 @@ function Dropdown(props: any) {
       onChange={selection =>
         {
           props.handleGuess(selection.track_name);
-          props.setClear("");
+          props.setInput("");
         }
       }
-      inputValue = {props.clear}
-      onInputValueChange={val => props.setClear(val)}
+      inputValue = {props.input}
+      onInputValueChange={val => props.setInput(val)}
       itemToString={() => ('')}
     >
       {({
@@ -55,22 +55,22 @@ function Dropdown(props: any) {
         selectedItem,
         getRootProps,
       }) => (
-        <div>
-          <div className="w-72 flex flex-col gap-1">
+        <div className = " pb-4">
+          <div className="w-72 flex flex-col mx-auto">
             <div
-              className="flex shadow-sm bg-white gap-0.5"
+              className="flex border-2 gap-0.5"
               {...getRootProps({}, {suppressRefError: true})}
             >
               <input
-                placeholder= {placeholderText()}
-                className="w-full p-1.5"
+                placeholder = {placeholderText()}
+                className = "w-full p-1.5 bg-[#3a3a3c] placeholder:text-white"
                 disabled = {props.gameOver}
                 {...getInputProps()}
               />
             </div>
           </div>
           <ul
-            className={`absolute w-72 bg-white mt-1 shadow-md max-h-80 overflow-scroll p-0 ${
+            className={`left-1/2 -translate-x-1/2 absolute w-72 bg-[#3a3a3c] mt-1 shadow-md max-h-80 overflow-scroll p-0 ${
               !(isOpen && items.length) && 'hidden'
             }`}
             {...getMenuProps()}
@@ -91,7 +91,7 @@ function Dropdown(props: any) {
                   .map((item: any, index: any) => (
                     <li
                       className={`
-                        ${highlightedIndex === index && 'bg-blue-300'}
+                        ${highlightedIndex === index && 'bg-[#272729]'}
                         py-2 px-3 shadow-sm flex flex-col`
                       }
                       {...getItemProps({
@@ -101,7 +101,7 @@ function Dropdown(props: any) {
                       })}
                     >
                       <span>{item.track_name}</span>
-                      <span className="text-sm text-gray-700">
+                      <span className="text-sm text-slate-300">
                         {item.album_name}
                       </span>
                     </li>

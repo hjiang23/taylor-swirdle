@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import './App.css';
 import Dropdown from './components/Dropdown';
 import ResultsTable from './components/ResultsTable';
@@ -14,8 +14,21 @@ data.forEach((element, index) => {
 
 function App() {
 
-  const ans = 112;
+  // console.log(data);
+  const ans = useRef(0);
   const colors: string[] = ["#3a3a3c", "#b59f3b", "#538d4e"];
+  
+  useEffect(() => {
+    fetch('https://taylor-swirdle.s3.us-east-2.amazonaws.com/ans.json')
+    .then((res) => res.json())
+    .then((data) => {
+      //  console.log(data);
+       ans.current = data.ans;
+    })
+       .catch((err) => {
+          console.log(err.message);
+       });
+ }, []);
 
   const [table, setTable] = useState<any>([]);
   const [input, setInput] = useState("");
@@ -24,7 +37,7 @@ function App() {
   const [won, setWon] = useState(false);
 
   const handleGuess = (guess: string) => {
-    setTable([...table, makeGuess(guess, ans, map)]);
+    setTable([...table, makeGuess(guess, ans.current, map)]);
     if (map.get(guess) === ans) {
       setWon(true);
       setGameOver(true);
@@ -39,7 +52,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(table);
+    localStorage.setItem("table", JSON.stringify(table));
   },[table])
 
   return (

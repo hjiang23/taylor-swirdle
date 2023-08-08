@@ -31,6 +31,10 @@ function Dropdown(props: any) {
     }
   }
 
+  if (!props.loading) {
+    return null;
+  }
+
   return (
     <Downshift
       onChange={selection =>

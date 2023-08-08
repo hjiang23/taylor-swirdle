@@ -2,6 +2,10 @@ function ResultsTable(props: any) {
 
     const guesses = props.table.map((row: any) => (<GuessRow contents = {row} colors = {props.colors}/>))
 
+    if (!props.loading) {
+        return null;
+    }
+
     return (
         <table className = "text-[9px] sm:text-xs mx-auto sm:w-4/5" >
             <thead>

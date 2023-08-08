@@ -25,20 +25,41 @@ function App() {
       //  console.log(data);
        ans.current = data.ans;
     })
-       .catch((err) => {
-          console.log(err.message);
-       });
+    .then(() => {
+      setWon(table.length > 0 && ans.current === map.get(table[table.length - 1].track_name.track_name));
+    })
+    .then(()=> {
+      if (localStorage.getItem("ans") !== JSON.stringify(ans.current)) {
+        setTable([]);
+        setWon(false);
+        setGameOver(false);
+        setGuessNum(1);
+      }
+      localStorage.setItem("ans", JSON.stringify(ans.current));
+    })
+    .then(() => {
+      setLoading(true);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
  }, []);
 
-  const [table, setTable] = useState<any>([]);
+  const [table, setTable] = useState<any>(JSON.parse(localStorage.getItem("table") || "[]"));
   const [input, setInput] = useState("");
   const [guessNum, setGuessNum] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   const [won, setWon] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setGuessNum(won ? table.length : table.length + 1);
+    setGameOver(won || guessNum > 6);
+  }, [won, guessNum])
 
   const handleGuess = (guess: string) => {
     setTable([...table, makeGuess(guess, ans.current, map)]);
-    if (map.get(guess) === ans) {
+    if (map.get(guess) === ans.current) {
       setWon(true);
       setGameOver(true);
     }
@@ -69,8 +90,8 @@ function App() {
             <Rules></Rules>
             <Share></Share>
           </div>
-          <Dropdown won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
-          <ResultsTable table = {table} colors = {colors}></ResultsTable>
+          <Dropdown loading = {loading} won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
+          <ResultsTable loading = {loading} table = {table} colors = {colors}></ResultsTable>
         </div>
         <p className = "p-8">
           Inspired by <a target= "_blank" rel="noreferrer" className = "underline" href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> and <a target= "_blank" rel="noreferrer" className = "underline" href="https://poeltl.dunk.town/">Poeltl</a>

@@ -88,7 +88,7 @@ function App() {
         <div className = "mx-auto">
           <div className = "mb-5 flex justify-center gap-2 w-3/5 mx-auto text-xs">
             <Rules></Rules>
-            <Share></Share>
+            <Share won = {won} guessNum = {guessNum} gameOver = {gameOver} table = {table}></Share>
           </div>
           <Dropdown loading = {loading} won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
           <ResultsTable loading = {loading} table = {table} colors = {colors}></ResultsTable>

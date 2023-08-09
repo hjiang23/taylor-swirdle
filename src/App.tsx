@@ -29,6 +29,9 @@ function App() {
       setWon(table.length > 0 && ans.current === map.get(table[table.length - 1].track_name.track_name));
     })
     .then(()=> {
+      if (localStorage.getItem("ans") === null) {
+        setShowHTP(true);
+      }
       if (localStorage.getItem("ans") !== JSON.stringify(ans.current)) {
         setTable([]);
         setWon(false);
@@ -51,6 +54,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [won, setWon] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showHTP, setShowHTP] = useState(false);
 
   useEffect(() => {
     setGuessNum(won ? table.length : table.length + 1);
@@ -87,7 +91,7 @@ function App() {
         </header>
         <div className = "mx-auto">
           <div className = "mb-5 flex justify-center gap-2 w-3/5 mx-auto text-xs">
-            <Rules></Rules>
+            <Rules showHTP = {showHTP}></Rules>
             <Share won = {won} guessNum = {guessNum} gameOver = {gameOver} table = {table}></Share>
           </div>
           <Dropdown loading = {loading} won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>

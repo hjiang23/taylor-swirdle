@@ -1,12 +1,15 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function Rules(props: any) {
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(props.showHTP);
     const handleClick = (e: any, bool: boolean) => {
         if (e.target === e.currentTarget) {
             setShowModal(bool);
         }
     }
+    useEffect(() => {
+      setShowModal(props.showHTP);
+    },[props.showHTP])
     return (
         <>
         <button className = "p-2 border-2 bg-[#3a3a3c]" onClick={() => setShowModal(true)}>HOW TO PLAY</button>

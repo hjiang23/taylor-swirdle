@@ -12,17 +12,17 @@ function Share(props: any) {
     }
     return (
         <>
-        <button className = {`p-2 border-2 ${!props.gameOver ? 'bg-[#121213] text-[#3a3a3c] border-[#3a3a3c]' : 'bg-[#3a3a3c]'}`} disabled = {!props.gameOver} onClick={() => handleClick()}>SHARE</button>
+        <button className = {`p-2 border-2 ${!props.gameOver ? 'bg-[#121213] text-[#3a3a3c] border-[#3a3a3c]' : 'bg-[#3a3a3c]'}`} disabled = {!props.gameOver} onClick={() => handleClick()}><strong>SHARE</strong></button>
         {showCopied ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className={`${blyat? 'opacity-100' : 'opacity-0'} transition-opacity justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#121213] outline-none focus:outline-none">
                 {/*header*/}
-                <div className={`${blyat? 'opacity-100' : 'opacity-0'} transition-opacity flex items-start justify-between p-2 bg-white`}>
+                <div className="flex items-start justify-between p-2 bg-white">
                   <p className="text-black text-xs">Copied results!</p>
                 </div>
               </div>

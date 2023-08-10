@@ -3,7 +3,7 @@ import data from './data.json';
 const albumOrder = new Map();
 albumOrder.set("Taylor Swift", 0);
 albumOrder.set("Fearless (Taylor's Version)", 1);
-albumOrder.set("Speak Now", 2);
+albumOrder.set("Speak Now (Taylor's Version)", 2);
 albumOrder.set("Red (Taylor's Version)", 3);
 albumOrder.set("1989", 4);
 albumOrder.set("reputation", 5);
@@ -14,13 +14,13 @@ albumOrder.set("Midnights", 9);
 
 interface DataEntry {
     album_name: string;
-    ep: string;
-    album_release: string;
+    ep?: string;
+    album_release?: string;
     track_number: number;
     track_name: string;
-    artist: string;
-    featuring: string;
-    bonus_track: string;
+    artist?: string;
+    featuring?: string;
+    bonus_track?: string;
     duration_ms: number;
 }
   

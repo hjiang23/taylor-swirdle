@@ -15,7 +15,7 @@ function Rules(props: any) {
     },[props.showHTP])
     return (
         <>
-        <button className = "p-2 border-2 bg-[#3a3a3c]" onClick={() => {setShowModal(true); setTimeout(()=>{setFade(true)}, 300)}}>HOW TO PLAY</button>
+        <button className = "p-2 border-2 bg-[#3a3a3c]" onClick={() => {setShowModal(true); setTimeout(()=>{setFade(true)}, 300)}}><strong>HOW TO PLAY</strong></button>
       {showModal ? (
         <>
           <div
@@ -23,7 +23,7 @@ function Rules(props: any) {
           >
             <div className={`relative w-auto my-6 mx-auto max-w-3xl ${fade? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#121213] outline-none focus:outline-none">
+              <div className="border-0 shadow-lg relative flex flex-col w-full bg-[#121213] outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
@@ -46,14 +46,15 @@ function Rules(props: any) {
                       <li><span className = "bg-[#b59f3b]">Yellow</span> means you are <em>close:</em></li>
                     </ul>
                     <ul className = "list-disc pl-5">
-                    <li >Album: The album before or after</li>
-                          <li>Duration: Within 10 seconds</li>
-                          <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers</li>
+                      <li >Album: The album before or after</li>
+                      <li>Duration: Within 10 seconds</li>
+                      <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers</li>
                     </ul>
                     <ul className = "list-disc">
-                        <li>Title Length includes punctuation and spaces</li>
-                        <li>The arrows indicate earlier/later in the alphabet, more/less characters, and higher/lower number</li>
-                        <li><em><strong>HINT</strong>: You can search tracks by album (They're sorted by track number!)</em></li>
+                      <li>The arrows indicate earlier/later in the alphabet, or a lower/higher number</li>
+                      <li>Album order: Debut, Fearless TV, Speak Now TV, Red TV, 1989, reputation, Lover, folklore, evermore, Midnights</li>
+                      <li>Title Length includes punctuation and spaces</li>
+                      <li><em><strong>HINT</strong>: You can search tracks by album (They're sorted by track number!)</em></li>
                     </ul>
                 </div>
               </div>

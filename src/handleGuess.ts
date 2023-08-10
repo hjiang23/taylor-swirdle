@@ -81,19 +81,6 @@ function handleTrackNumber(guessObj: DataEntry, ansObj: DataEntry) {
     return {track_number: guessObj.track_number, correctness: correctness, direction: correctness === 2 ? 0 : guessObj.track_number < ansObj.track_number ? 1 : -1};
 }
   
-function handleFeatures(guessObj: DataEntry, ansObj: DataEntry) {
-    let correctness;
-  
-    if (guessObj.featuring === ansObj.featuring) {
-      correctness = 2;
-    }
-    else {
-      correctness = guessObj.featuring !== "NA" && ansObj.featuring !== "NA" ? 1 : 0;
-    }
-  
-    return {featuring: guessObj.featuring === "NA" ? "None" : guessObj.featuring, correctness: correctness};
-}
-  
 function handleBonus(guessObj: DataEntry, ansObj: DataEntry) {
   
     let bonus, ansBonus, correctness;

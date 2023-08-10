@@ -39,16 +39,21 @@ function Rules(props: any) {
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
-                    <ul className="list-disc text-left text-base leading-loose">
-                        <li>You have six guesses to guess the Taylor Swift track of the day!</li>
-                        <li><span className = "bg-[#538d4e]">Green</span> in any column indicates a match!</li>
-                        <li>Album: <span className = "bg-[#b59f3b]">Yellow</span> means the mystery track is on the album either before or after this album (Album sorting disregards Taylor's Version release date)</li>
-                        <li>First Letter: <span className = "bg-[#b59f3b]">Yellow</span> means the mystery track starts with a letter within two of this letter, and left/right arrows indicate earlier/later in the alphabet</li>
-                        <li>Title Length: <span className = "bg-[#b59f3b]">Yellow</span> means the number of characters in the mystery track title is within two of this track, and up/down arrows indicate more/less characters</li>
-                        <li>Track Number: <span className = "bg-[#b59f3b]">Yellow</span> means the track number of the mystery track is within two of this track's, and up/down arrows indicate higher/lower track number</li>
-                        <li>Duration: <span className = "bg-[#b59f3b]">Yellow</span> means the duration of the mystery track is within 10 seconds of this track's, and up/down arrows indicate longer/shorter duration</li>
-                        <li><em>Hint: You can search tracks by album (They're sorted by track number!)</em></li>
+                <div className="relative py-6 px-10 flex-auto text-left text-base leading-loose">
+                    <ul className = "list-disc">
+                      <li>You have six guesses to guess the Taylor Swift track of the day!</li>
+                      <li><span className = "bg-[#538d4e]">Green</span> in any column indicates a match!</li>
+                      <li><span className = "bg-[#b59f3b]">Yellow</span> means you are <em>close:</em></li>
+                    </ul>
+                    <ul className = "list-disc pl-5">
+                    <li >Album: The album before or after</li>
+                          <li>Duration: Within 10 seconds</li>
+                          <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers</li>
+                    </ul>
+                    <ul className = "list-disc">
+                        <li>Title Length includes punctuation and spaces</li>
+                        <li>The arrows indicate earlier/later in the alphabet, more/less characters, and higher/lower number</li>
+                        <li><em><strong>HINT</strong>: You can search tracks by album (They're sorted by track number!)</em></li>
                     </ul>
                 </div>
               </div>

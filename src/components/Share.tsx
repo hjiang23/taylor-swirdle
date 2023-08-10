@@ -2,9 +2,12 @@ import {useState} from 'react';
 
 function Share(props: any) {
     const [showCopied, setShowCopied] = useState(false);
+    const [blyat, setBlyat] = useState(false);
     const handleClick = () => {
       setShowCopied(true);
       navigator.clipboard.writeText(getResults(props.table, props.won, props.guessNum));
+      setTimeout(()=>{setBlyat(true)}, 100);
+      setTimeout(()=>{setBlyat(false)}, 1000);
       setTimeout(()=>{setShowCopied(false)}, 1500);
     }
     return (
@@ -19,7 +22,7 @@ function Share(props: any) {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#121213] outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-2 bg-white">
+                <div className={`${blyat? 'opacity-100' : 'opacity-0'} transition-opacity flex items-start justify-between p-2 bg-white`}>
                   <p className="text-black text-xs">Copied results!</p>
                 </div>
               </div>
@@ -40,7 +43,7 @@ const getResults = (table: any, won: boolean, guessNum: boolean) => {
     res += row.length.correctness === 2 ? '🟩': row.length.correctness === 1 ? '🟨': '⬛';
     res += row.track_number.correctness === 2 ? '🟩': row.track_number.correctness === 1 ? '🟨': '⬛';
     res += row.duration.correctness === 2 ? '🟩': row.duration.correctness === 1 ? '🟨': '⬛';
-    if (i != arr.length - 1) {
+    if (i !== arr.length - 1) {
       res += '\n';
     }
   })

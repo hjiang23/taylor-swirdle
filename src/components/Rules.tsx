@@ -46,14 +46,14 @@ function Rules(props: any) {
                       <li><span className = "bg-[#b59f3b]">Yellow</span> means you are <em>close:</em></li>
                     </ul>
                     <ul className = "list-disc pl-5">
-                      <li >Album: The album before or after</li>
-                      <li>Duration: Within 10 seconds</li>
-                      <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers</li>
+                      <li>Album: The mystery track is from an album before or after this one.</li>
+                      <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers of the mystery track.</li>
+                      <li>Duration: Within 10 seconds of the mystery track.</li>
                     </ul>
                     <ul className = "list-disc">
-                      <li>The arrows indicate earlier/later in the alphabet, or a lower/higher number</li>
-                      <li>Album order: Debut, Fearless TV, Speak Now TV, Red TV, 1989, reputation, Lover, folklore, evermore, Midnights</li>
-                      <li>Title Length includes punctuation and spaces</li>
+                      <li>The arrows indicate earlier/later (←/→) in the alphabet, or a lower/higher (↓/↑) number.</li>
+                      <li>Album order: Debut, Fearless TV, Speak Now TV, Red TV, 1989, reputation, Lover, folklore, evermore, Midnights.</li>
+                      <li>Title Length includes punctuation and spaces.</li>
                       <li><em><strong>HINT</strong>: You can search tracks by album (They're sorted by track number!)</em></li>
                     </ul>
                 </div>

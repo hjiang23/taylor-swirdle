@@ -41,20 +41,20 @@ function Rules(props: any) {
                 {/*body*/}
                 <div className="relative py-6 px-10 flex-auto text-left text-base leading-loose">
                     <ul className = "list-disc">
-                      <li>You have six guesses to guess the Taylor Swift track of the day!</li>
+                      <li>You have six guesses to guess the Taylor Swift song of the day!</li>
                       <li><span className = "bg-[#538d4e]">Green</span> in any column indicates a match!</li>
                       <li><span className = "bg-[#b59f3b]">Yellow</span> means you are <em>close:</em></li>
                     </ul>
                     <ul className = "list-disc pl-5">
-                      <li>Album: The mystery track is from an album before or after this one.</li>
-                      <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers of the mystery track.</li>
-                      <li>Duration: Within 10 seconds of the mystery track.</li>
+                      <li>Album: The mystery song is from an album before or after this one.</li>
+                      <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers of the mystery song.</li>
+                      <li>Duration: Within 10 seconds of the mystery song.</li>
                     </ul>
                     <ul className = "list-disc">
                       <li>The arrows indicate earlier/later (←/→) in the alphabet, or a lower/higher (↓/↑) number.</li>
                       <li>Album order: Debut, Fearless TV, Speak Now TV, Red TV, 1989, reputation, Lover, folklore, evermore, Midnights.</li>
                       <li>Title Length includes punctuation and spaces.</li>
-                      <li><em><strong>HINT</strong>: You can search tracks by album (They're sorted by track number!)</em></li>
+                      <li><em><strong>HINT</strong>: You can search for songs by album (They're sorted by track number!).</em></li>
                     </ul>
                 </div>
               </div>

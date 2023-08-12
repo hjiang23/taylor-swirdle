@@ -19,11 +19,11 @@ function Rules(props: any) {
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" onClick={(e) => handleClick(e, false)}
+            className="justify-center items-center flex overflow-x-hidden overflow-y-scroll fixed inset-0 z-50 outline-none focus:outline-none" onClick={(e) => handleClick(e, false)}
           >
             <div className={`relative w-auto my-6 mx-auto max-w-3xl ${fade? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
               {/*content*/}
-              <div className="border-0 shadow-lg relative flex flex-col w-full bg-[#121213] outline-none focus:outline-none">
+              <div className="max-h-[600px] overflow-y-scroll border-0 shadow-lg relative flex flex-col w-full bg-[#121213] outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">

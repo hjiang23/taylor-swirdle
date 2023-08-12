@@ -24,6 +24,7 @@ function App() {
     .then((data) => {
       //  console.log(data);
        ans.current = data.ans;
+       setDay(data.num);
     })
     .then(() => {
       setWon(table.length > 0 && ans.current === map.get(table[table.length - 1].track_name.track_name));
@@ -55,6 +56,7 @@ function App() {
   const [won, setWon] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showHTP, setShowHTP] = useState(false);
+  const [day, setDay] = useState(0);
 
   useEffect(() => {
     setGuessNum(won ? table.length : table.length + 1);
@@ -92,7 +94,7 @@ function App() {
         <div className = "mx-auto">
           <div className = "mb-5 flex justify-center gap-2 w-3/5 mx-auto text-xs">
             <Rules showHTP = {showHTP}></Rules>
-            <Share won = {won} guessNum = {guessNum} gameOver = {gameOver} table = {table}></Share>
+            <Share day = {day} won = {won} guessNum = {guessNum} gameOver = {gameOver} table = {table}></Share>
           </div>
           <Dropdown loading = {loading} won = {won} gameOver = {gameOver} guessNum = {guessNum} input = {input} setInput = {setInput} table = {table} handleGuess = {handleGuess}></Dropdown>
           <ResultsTable loading = {loading} table = {table} colors = {colors}></ResultsTable>

@@ -5,7 +5,7 @@ function Share(props: any) {
     const [blyat, setBlyat] = useState(false);
     const handleClick = () => {
       setShowCopied(true);
-      navigator.clipboard.writeText(getResults(props.table, props.won, props.guessNum));
+      navigator.clipboard.writeText(getResults(props.table, props.won, props.guessNum, props.day));
       setTimeout(()=>{setBlyat(true)}, 100);
       setTimeout(()=>{setBlyat(false)}, 1000);
       setTimeout(()=>{setShowCopied(false)}, 1500);
@@ -34,9 +34,9 @@ function Share(props: any) {
     );
 }
 
-const getResults = (table: any, won: boolean, guessNum: boolean) => {
+const getResults = (table: any, won: boolean, guessNum: boolean, day: number) => {
   let res = "";
-  res += `Taylor Swirdle ${won ? guessNum : 'X'}/6\n\n`;
+  res += `Taylor Swirdle ${day} - ${won ? guessNum : 'X'}/6\n\n`;
   table.forEach((row: any, i: number, arr: any) => {
     res += row.album.correctness === 2 ? '🟩': row.album.correctness === 1 ? '🟨': '⬛';
     res += row.first_letter.correctness === 2 ? '🟩': row.first_letter.correctness === 1 ? '🟨': '⬛';

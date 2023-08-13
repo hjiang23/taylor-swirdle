@@ -47,7 +47,7 @@ function Rules(props: any) {
                     </ul>
                     <ul className = "list-disc pl-5">
                       <li>Album: The mystery song is from an album before or after this one.</li>
-                      <li>First Letter, Title Length, and Track Number: Within 2 letters/characters/numbers of the mystery song.</li>
+                      <li>First Letter, Title Length, and Track Number: Within 2 letters / characters / numbers of the mystery song.</li>
                       <li>Duration: Within 10 seconds of the mystery song.</li>
                     </ul>
                     <ul className = "list-disc">
